@@ -59,3 +59,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+.gradient-text {
+  background: linear-gradient( to right, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--border)), white  ,hsl(var(--primary)) );
+  background-size: 300% 300%;
+  background-clip: text;
+}
