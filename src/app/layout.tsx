@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Mono, Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from './_components/theme-provider'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-export const ibm_Plex_Mono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-ibm-plex-mono',
-})
+// const ibm_Plex_Mono = IBM_Plex_Mono({
+//   subsets: ['latin'],
+//   weight: ['400'],
+//   variable: '--font-plex-mono',
+// })
 
 export const metadata: Metadata = {
   title: 'Luis Carlos Website',
@@ -21,10 +21,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <ThemeProvider attribute="class" defaultTheme="dark">
-        <body className={inter.className}>{children}</body>
-      </ThemeProvider>
+    <html lang="pt-BR">
+      {/* <ThemeProvider attribute="class" defaultTheme="dark"> */}
+      <body className={inter.variable}>{children}</body>
+      {/* </ThemeProvider> */}
     </html>
   )
 }

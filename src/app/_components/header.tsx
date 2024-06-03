@@ -8,14 +8,8 @@ export function Header() {
       </h1>
 
       <nav className="space-x-4">
-        <Link href="/">
-          <span className="text-primary mr-2">#</span>
-          Home
-        </Link>
-        <Link href="/">
-          <span className="text-primary mr-2">#</span>
-          Projetos
-        </Link>
+        <Link href="/"># Home</Link>
+        <Link href="/projects"> # Projetos</Link>
       </nav>
     </header>
   )

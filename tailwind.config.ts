@@ -77,6 +77,9 @@ const config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
         gradient: 'gradient 6s linear infinite',
       },
+      fontFamily: {
+        sans: 'var(--font-inter)',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
