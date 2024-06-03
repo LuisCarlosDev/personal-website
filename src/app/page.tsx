@@ -5,12 +5,14 @@ import { Badge } from './_components/ui/badge'
 import { Button } from './_components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { skills } from './_data/skills'
+import { linksSocial } from './_data/links-social'
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full flex flex-col max-w-[1600px]">
       <Header />
-      <div className="flex items-center justify-between py-10 px-40">
+      <section className="flex items-center justify-between py-10 px-40">
         <div className="w-full h-full flex flex-col max-w-[530px]">
           <div className="space-y-6 mb-12">
             <SectionTitle title="Olá, meu nome é" subtitle="Luis Carlos" />
@@ -23,9 +25,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap gap-2">
-              {Array.from({ length: 8 }).map((_, index) => (
+              {skills.map((skill, index) => (
                 <Badge key={index} className="rounded-md px-4 py-1 space-y-3">
-                  ReactJS
+                  {skill.name}
                 </Badge>
               ))}
             </div>
@@ -37,30 +39,18 @@ export default function Home() {
             </Button>
 
             <div className="flex items-center gap-2">
-              <Link href="https://github.com/LuisCarlosDev">
-                <Image
-                  src="/icons/github.svg"
-                  alt="Github Icone"
-                  width={20}
-                  height={20}
-                />
-              </Link>
-              <Link href="https://www.linkedin.com/in/luiscarlossilvaofc/">
-                <Image
-                  src="/icons/linkedin.svg"
-                  alt="Github Icone"
-                  width={20}
-                  height={20}
-                />
-              </Link>
-              <Link href="https://www.instagram.com/luis_carlos__ofc/">
-                <Image
-                  src="/icons/instagram.svg"
-                  alt="Github Icone"
-                  width={20}
-                  height={20}
-                />
-              </Link>
+              {linksSocial.map((link) => {
+                return (
+                  <Link key={link.name} href={link.url}>
+                    <Image
+                      src={link.icon}
+                      alt={link.name}
+                      width={20}
+                      height={20}
+                    />
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -71,10 +61,29 @@ export default function Home() {
             width={420}
             height={404}
             priority
-            className="w-[420px] h-[404px] object-cover object-center rounded-md shadow-2xl"
+            className="w-[420px] h-[404px] object-cover object-center rounded-md shadow-2xl transform hover:scale-105 duration-300"
           />
         </div>
-      </div>
+      </section>
+      <section className="flex flex-col w-full py-10 px-40 space-y-6 ">
+        <SectionTitle title="../competências" subtitle="Conhecimentos" />
+        <div className="flex flex-wrap gap-2 w-full">
+          {skills.map((skill, index) => {
+            return (
+              <div
+                key={index}
+                className="p-6 rounded-lg bg-white shadow-lg flex flex-col gap-2 hover:text-background hover:bg-primary/30 transition-all"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="font-medium">{skill.name}</p>
+                </div>
+
+                <span>{skill.experience_years} anos de experiência</span>
+              </div>
+            )
+          })}
+        </div>
+      </section>
     </div>
   )
 }

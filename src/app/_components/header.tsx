@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { NavLink } from './nav-link'
 
 export function Header() {
   return (
@@ -8,8 +8,8 @@ export function Header() {
       </h1>
 
       <nav className="space-x-4">
-        <Link href="/"># Home</Link>
-        <Link href="/projects"> # Projetos</Link>
+        <NavLink href="/">Home</NavLink>
+        <NavLink href="/projects">Projetos</NavLink>
       </nav>
     </header>
   )

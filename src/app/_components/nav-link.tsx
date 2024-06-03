@@ -1,9 +1,24 @@
-import Link, { LinkProps } from 'next/link'
-import { useRouter } from 'next/router'
+'use client'
 
-type NavLinkProps = LinkProps
+import Link, { LinkProps } from 'next/link'
+import { usePathname } from 'next/navigation'
+
+type NavLinkProps = LinkProps & {
+  children: React.ReactNode
+}
 
 export function NavLink(props: NavLinkProps) {
-  const { pathname } = useRouter()
-  return <Link data-current={pathname === props.href} {...props} />
+  const pathname = usePathname()
+  const isActive = pathname === props.href
+
+  return (
+    <Link
+      data-current={pathname === props.href}
+      {...props}
+      className={`${isActive && 'text-primary'}`}
+    >
+      <span className="text-primary font-bold mr-2">#</span>
+      {props.children}
+    </Link>
+  )
 }
